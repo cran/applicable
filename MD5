@@ -1,4 +1,4 @@
-858af54f70b9874eafc92383415329bd *DESCRIPTION
+0b3ba5afef5c9da104a11d612c77ee10 *DESCRIPTION
 386d421d262de460ec1ec569ef908b78 *LICENSE
 b7cc33c67ed3baa90d4784fd95bc1479 *NAMESPACE
 62ec97ea7ff90476b36e03e89c6f4fb0 *R/0.R
@@ -16,7 +16,7 @@ f95708596ee3c1e3b36fe13107bec9f4 *R/s3_register.R
 1de88b9ec3fb1ab59ab0f69d003326ca *R/score.R
 3fa6ef3ba16da63b75ca787b393aea75 *R/similarity.R
 8b2a530429e2744d72280c3d15a4717f *R/zzz.R
-f3363aa30620d6add0bb2d6a0aa67734 *README.md
+0e9ca89f496f9e0d6cfca381ea2e92d0 *README.md
 d2a86c9dc96a64c7080d0b29a5099d36 *build/vignette.rds
 c3890f3a57234675669f6b1645ac92f5 *data/ames_new.rda
 0f5ccfc399b36a8cca118e5f8d19940a *data/datalist
@@ -28,12 +28,12 @@ bf54da69a1fe13a82a0b7cc0f1a8b942 *inst/doc/binary-data.R
 d6eeeb043e1928686a016f13b72d1916 *inst/doc/binary-data.html
 506b2a394a812b351b095c6cc5bddb32 *inst/doc/continuous-data.R
 0dcf0f36b053233b97369f836e23b53c *inst/doc/continuous-data.Rmd
-b0353c1a1fb3c87be770cdd097ffe542 *inst/doc/continuous-data.html
+31f81a42ca69984420c7079c0e17d8ce *inst/doc/continuous-data.html
 d3543062fd07c0b9e583d8a55d0279b4 *man/ames_new.Rd
 6876388b9a92a4623fc9a36899254fa9 *man/apd_hat_values.Rd
 95dc065c8e4fece5f917861b933fd160 *man/apd_pca.Rd
 22a15acd87cf99b62f4db99110e39328 *man/apd_similarity.Rd
-27b389ef3f2661d90043856cdb1879e4 *man/applicable-package.Rd
+653661c41cc90dfca2abbf7a443c99f1 *man/applicable-package.Rd
 41529a464cfa785aeb8083dc39c34dc6 *man/autoplot.apd_pca.Rd
 2c3719e645df2896be6c83354e59626d *man/autoplot.apd_similarity.Rd
 8d0927dab4afdbd0dc58a9ae943bd45a *man/binary.Rd
@@ -55,7 +55,7 @@ deccd275613737e31726915dd0276923 *tests/testthat/test-hat_values-fit.R
 383a626c5c04cffe312a6478a66e3c5d *tests/testthat/test-hat_values-score.R
 7806fa8f199c2586312dd6671c1d35e9 *tests/testthat/test-misc.R
 c75aa317e5be4bca07bca0f41942da06 *tests/testthat/test-pca-fit.R
-4901c981b21468564c29b2a7e2c21752 *tests/testthat/test-pca-score.R
+2ddd0941420f0af28b948b6413eed1cb *tests/testthat/test-pca-score.R
 0b20ffdd43e3e3dafc57817834df9d64 *tests/testthat/test-plot.R
 27da6ac0ceddda0cbf44d9b54dfd2307 *tests/testthat/test-print.R
 148157cd215587163e3ee6b63ec73370 *tests/testthat/test-similarity.R

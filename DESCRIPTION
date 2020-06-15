@@ -1,6 +1,6 @@
 Package: applicable
 Title: A Compilation of Applicability Domain Methods
-Version: 0.0.1
+Version: 0.0.1.1
 Authors@R: c(
     person(given = "Marly", family = "Gotti", email = "marlygotti@gmail.com", role = c("aut", "cre")),
     person(given = "Max", family = "Kuhn", email = "max@rstudio.com", role = c("aut")),
@@ -9,7 +9,9 @@ Description: A modeling package compiling applicability domain methods in R.
     It combines different methods to measure the amount of extrapolation new
     samples can have from the training set. See Netzeva et al (2005) 
     <doi:10.1177/026119290503300209> for an overview of applicability domains. 
-URL: https://github.com/tidymodels/applicable
+URL: https://github.com/tidymodels/applicable,
+        https://applicable.tidymodels.org
+BugReports: https://github.com/tidymodels/applicable/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -22,10 +24,10 @@ RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 Language: en-US
 NeedsCompilation: no
-Packaged: 2020-05-15 02:48:39 UTC; marlygotti
+Packaged: 2020-06-15 02:42:20 UTC; marlygotti
 Author: Marly Gotti [aut, cre],
   Max Kuhn [aut],
   RStudio [cph]
 Maintainer: Marly Gotti <marlygotti@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-05-25 14:00:02 UTC
+Date/Publication: 2020-06-15 04:40:02 UTC
