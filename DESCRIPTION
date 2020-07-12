@@ -1,6 +1,6 @@
 Package: applicable
 Title: A Compilation of Applicability Domain Methods
-Version: 0.0.1.1
+Version: 0.0.1.2
 Authors@R: c(
     person(given = "Marly", family = "Gotti", email = "marlygotti@gmail.com", role = c("aut", "cre")),
     person(given = "Max", family = "Kuhn", email = "max@rstudio.com", role = c("aut")),
@@ -20,14 +20,14 @@ Imports: hardhat (>= 0.1.2), rlang, stats, glue, tibble, proxyC,
         Matrix, dplyr, utils, purrr, tidyselect, tidyr
 Suggests: recipes (>= 0.1.7), testthat (>= 2.1.0), knitr, rmarkdown,
         covr, AmesHousing, spelling, xml2, modeldata
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Language: en-US
 NeedsCompilation: no
-Packaged: 2020-06-15 02:42:20 UTC; marlygotti
+Packaged: 2020-07-11 23:03:04 UTC; marlygotti
 Author: Marly Gotti [aut, cre],
   Max Kuhn [aut],
   RStudio [cph]
 Maintainer: Marly Gotti <marlygotti@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-06-15 04:40:02 UTC
+Date/Publication: 2020-07-12 15:30:03 UTC

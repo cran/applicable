@@ -20,6 +20,9 @@ ames <- make_ames()
 library(recipes)
 library(dplyr)
 
+# Load custom houses from applicable.
+data(ames_new, package = "applicable")
+
 ames_cols <- names(ames_new)
 
 training_data <- 
@@ -52,8 +55,7 @@ ames_pca
 ames_pca <- apd_pca(training_recipe, training_data, threshold = 0.25)
 ames_pca
 
-## ----autoplot, fig.align='center'-----------------------------------------------------------------
-
+## ----autoplot, fig.align='center', fig.width=6----------------------------------------------------
 library(ggplot2)
 autoplot(ames_pca)
 
