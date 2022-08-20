@@ -13,8 +13,8 @@ theme_set(theme_bw())
 library(applicable)
 
 ## ----ames_data, message=FALSE---------------------------------------------------------------------
-library(AmesHousing)
-ames <- make_ames()
+library(modeldata)
+data(ames)
 
 ## ----prep_data, message=FALSE---------------------------------------------------------------------
 library(recipes)
@@ -23,7 +23,9 @@ library(dplyr)
 # Load custom houses from applicable.
 data(ames_new, package = "applicable")
 
-ames_cols <- names(ames_new)
+ames_cols <- c('MS_SubClass', 'Lot_Frontage', 'Lot_Area', 'Lot_Shape', 
+               'Neighborhood', 'Bldg_Type', 'Year_Built', 'Central_Air', 
+               'Gr_Liv_Area', 'Full_Bath', 'Half_Bath', 'Longitude', 'Latitude')
 
 training_data <- 
   ames %>% 
@@ -60,7 +62,7 @@ library(ggplot2)
 autoplot(ames_pca)
 
 ## ---- echo = FALSE, results = "hold"--------------------------------------------------------------
-autoplot(ames_pca, matches("PC0[1-5]"))
+autoplot(ames_pca, matches("PC[1-5]"))
 autoplot(ames_pca, distance) + scale_x_log10()
 
 ## ----new_sample-----------------------------------------------------------------------------------
@@ -70,9 +72,9 @@ pca_score %>% select(matches("PC00[1-3]"), contains("distance"))
 
 ## ---- echo = FALSE--------------------------------------------------------------------------------
 training_scores <- score(ames_pca, training_data)
-ggplot(training_scores, aes(x = PC001)) + 
+ggplot(training_scores, aes(x = PC01)) + 
   geom_histogram(col = "white", binwidth = .5) + 
-  geom_vline(xintercept = pca_score$PC001, col = "red")
+  geom_vline(xintercept = pca_score$PC01, col = "red")
 
 ## -------------------------------------------------------------------------------------------------
 # `ames_pca$pcs` is the output of `prcomp()`
@@ -80,9 +82,9 @@ comp_one <- ames_pca$pcs$rotation[, 1]
 comp_one[order(abs(comp_one), decreasing = TRUE)] %>% head(5)
 
 ## ---- echo = FALSE--------------------------------------------------------------------------------
-ggplot(training_data, aes(x = Garage_Area )) + 
+ggplot(training_data, aes(x = Gr_Liv_Area )) + 
   geom_histogram(col = "white", binwidth = 50) + 
-  geom_vline(xintercept = ames_new$Garage_Area, col = "red")
+  geom_vline(xintercept = ames_new$Gr_Liv_Area, col = "red")
 
 ## -------------------------------------------------------------------------------------------------
 non_singular_recipe <- 

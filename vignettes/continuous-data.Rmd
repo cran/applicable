@@ -2,7 +2,7 @@
 title: "Applicability domain methods for continuous data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{continuous-data}
+  %\VignetteIndexEntry{Applicability domain methods for continuous data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -35,8 +35,8 @@ library(applicable)
 We will use the Ames IA housing data for our example.
 
 ```{r ames_data, message=FALSE}
-library(AmesHousing)
-ames <- make_ames()
+library(modeldata)
+data(ames)
 ```
 
 There are `r format(nrow(ames), big.mark = ",")` properties in the data.
@@ -48,9 +48,9 @@ The Sale Price was recorded along with `r ncol(ames)` predictors, including:
 * General assessments such as overall quality and condition.
 * Number of bedrooms, baths, and so on.
 
-More details can be found in [De Cock (2011, Journal of Statistics Education)](http://ww2.amstat.org/publications/jse/v19n3/decock.pdf).
+More details can be found in [De Cock (2011, Journal of Statistics Education)](http://jse.amstat.org/v19n3/decock.pdf).
 
-The raw data are at [`http://bit.ly/2whgsQM`](http://bit.ly/2whgsQM) but we 
+The raw data are at [`http://jse.amstat.org/v19n3/decock/AmesHousing.txt`](http://jse.amstat.org/v19n3/decock/AmesHousing.txt) but we 
 will use a processed version found in the 
 [`AmesHousing`](https://github.com/topepo/AmesHousing) package. `applicable` 
 also contains an update for these data for three new properties (although fewer 
@@ -72,7 +72,9 @@ library(dplyr)
 # Load custom houses from applicable.
 data(ames_new, package = "applicable")
 
-ames_cols <- names(ames_new)
+ames_cols <- c('MS_SubClass', 'Lot_Frontage', 'Lot_Area', 'Lot_Shape', 
+               'Neighborhood', 'Bldg_Type', 'Year_Built', 'Central_Air', 
+               'Gr_Liv_Area', 'Full_Bath', 'Half_Bath', 'Longitude', 'Latitude')
 
 training_data <- 
   ames %>% 
@@ -144,7 +146,7 @@ autoplot(ames_pca)
 You can use regular expressions to plot a smaller subset of the pca statistics:
 
 ```{r, echo = FALSE, results = "hold"}
-autoplot(ames_pca, matches("PC0[1-5]"))
+autoplot(ames_pca, matches("PC[1-5]"))
 autoplot(ames_pca, distance) + scale_x_log10()
 ```
 
@@ -164,9 +166,9 @@ set in the first component:
 
 ```{r, echo = FALSE}
 training_scores <- score(ames_pca, training_data)
-ggplot(training_scores, aes(x = PC001)) + 
+ggplot(training_scores, aes(x = PC01)) + 
   geom_histogram(col = "white", binwidth = .5) + 
-  geom_vline(xintercept = pca_score$PC001, col = "red")
+  geom_vline(xintercept = pca_score$PC01, col = "red")
 ```
 
 What is driving the first component? We can look at which predictors have the
@@ -180,12 +182,12 @@ comp_one[order(abs(comp_one), decreasing = TRUE)] %>% head(5)
 ```
 
 These three houses are extreme in the most influential variable (year built) since
-they were new homes. The also tend to have fairly large garages:
+they were new homes. The also tend to have fairly large gross living areas:
 
 ```{r, echo = FALSE}
-ggplot(training_data, aes(x = Garage_Area )) + 
+ggplot(training_data, aes(x = Gr_Liv_Area )) + 
   geom_histogram(col = "white", binwidth = 50) + 
-  geom_vline(xintercept = ames_new$Garage_Area, col = "red")
+  geom_vline(xintercept = ames_new$Gr_Liv_Area, col = "red")
 ```
 
 This may be what is driving the first component. 

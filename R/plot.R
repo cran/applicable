@@ -1,4 +1,4 @@
-#' Plot the distribution function for pcas
+#' Plot the distribution function for principal components
 #'
 #' @param object An object produced by `apd_pca`.
 #'
@@ -21,7 +21,6 @@
 #' # Using selectors in `...`
 #' autoplot(biomass_ad, distance) + scale_x_log10()
 #' autoplot(biomass_ad, matches("PC[1-2]"))
-#'
 #' @export autoplot.apd_pca
 #' @export
 autoplot.apd_pca <- function(object, ...) {
@@ -34,12 +33,24 @@ autoplot.apd_pca <- function(object, ...) {
     pctl_data <- pctl_data %>% dplyr::select(!!terms, percentile)
   }
 
-  pctl_data %>%
+  p <-
+    pctl_data %>%
     tidyr::gather(component, value, -percentile) %>%
     ggplot2::ggplot(aes(x = value, y = percentile)) +
-    ggplot2::geom_step(direction = "hv") +
-    ggplot2::facet_wrap(~ component) +
-    xlab("abs(value)")
+    ggplot2::geom_step(direction = "hv")
+
+  plot_cols <- names(pctl_data)[names(pctl_data) != "percentile"]
+  if (length(plot_cols) > 1) {
+    p <- p + ggplot2::facet_wrap(~ component, scales = "free_x")
+  }
+
+  if (all(plot_cols == "distance")) {
+    p <- p + xlab("distance to center")
+  } else {
+    p <- p + xlab("abs(value)")
+  }
+
+  p
 }
 
 #' Plot the cumulative distribution function for similarity metrics
@@ -55,10 +66,11 @@ autoplot.apd_pca <- function(object, ...) {
 #'
 #' @examples
 #' set.seed(535)
-#' tr_x <- matrix(sample(0:1, size = 20 * 50, prob = rep(.5, 2),
-#'  replace = TRUE), ncol = 20)
+#' tr_x <- matrix(
+#'   sample(0:1, size = 20 * 50, prob = rep(.5, 2), replace = TRUE),
+#'   ncol = 20
+#' )
 #' model <- apd_similarity(tr_x)
-#'
 #' @export autoplot.apd_similarity
 #' @export
 autoplot.apd_similarity <- function(object, ...) {
